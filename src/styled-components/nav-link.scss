@@ -1,0 +1,22 @@
+// Estilos componente NavLink
+
+$green: #C1D72F;
+
+@mixin menu-default {
+    font-size: 20px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: #000000;
+};
+
+
+.nav-item {
+    @include menu-default;
+    text-decoration: none;
+    
+    &.menu-active,
+    &:active {
+        color: $green;
+    }
+}

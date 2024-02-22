@@ -1,9 +1,14 @@
+import Nav from "../../components/Nav";
 
 
 export default function Overview() {
     return (
         <>
-        <h1>This is the overview</h1>
+        <Nav />
+
+        <section>
+            
+        </section>
         </>
     );
 }

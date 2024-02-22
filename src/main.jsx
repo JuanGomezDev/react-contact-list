@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import './main.scss';
 
 import Overview from './pages/overview/Overview';
 import Contact from './pages/contacts/Contact';
