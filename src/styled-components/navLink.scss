@@ -15,6 +15,10 @@ $green: #C1D72F;
     @include menu-default;
     text-decoration: none;
     
+    &:hover {
+        color: #74821b;
+    }
+
     &.menu-active,
     &:active {
         color: $green;

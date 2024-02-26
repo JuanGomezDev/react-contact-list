@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import '../styled-components/nav-link.scss';
+import '../styled-components/navLink.scss';
 import { useState } from 'react';
 
 export default function NavLink({ text = 'Link', path = '#' }) {
