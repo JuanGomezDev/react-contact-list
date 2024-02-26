@@ -1,0 +1,19 @@
+// Estilos componente HeaderDivider
+
+header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+
+    h1 {
+        font-size: 34px;
+        font-weight: 300;
+    }
+
+    img {
+        width: 72vw;
+        height: 3px;
+    }
+}
+

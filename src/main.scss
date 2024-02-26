@@ -5,10 +5,6 @@
     font-family: "Roboto", sans-serif;
 }
 
-// Estilos para encabezado de cada section o page
-.heading {
-    font-size: 34px;
-}
 
 * {
     margin: 0;
@@ -16,6 +12,6 @@
 }
 
 section {
-    padding: 0px 40px 0px 40px;
+    padding: 0px 40px;
     @include character-style;
 }
