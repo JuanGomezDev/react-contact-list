@@ -9,6 +9,7 @@
 * {
     margin: 0;
     padding: 0;
+    @include character-style;
 }
 
 body {
@@ -17,5 +18,4 @@ body {
 
 section {
     padding: 0px 60px;
-    @include character-style;
 }
