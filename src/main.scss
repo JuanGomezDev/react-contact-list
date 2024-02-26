@@ -11,7 +11,11 @@
     padding: 0;
 }
 
+body {
+    padding-bottom: 80px;
+}
+
 section {
-    padding: 0px 40px;
+    padding: 0px 60px;
     @include character-style;
 }

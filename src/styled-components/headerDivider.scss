@@ -4,7 +4,8 @@ header {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 60px;
+    margin-bottom: 40px;
 
     h1 {
         font-size: 34px;
@@ -12,7 +13,7 @@ header {
     }
 
     img {
-        width: 72vw;
+        width: 68vw;
         height: 3px;
     }
 }

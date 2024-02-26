@@ -7,7 +7,7 @@ export default function CardList({contactsList}) {
     return (
         <div className='contacts-container'>
             {contactsList.map((contact) => {
-                <Card key={contact.id} contact={contact}/>
+                return <Card key={contact.id} contact={contact}/>
             })}
         </div>
     );
