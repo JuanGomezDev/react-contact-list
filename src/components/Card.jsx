@@ -3,6 +3,8 @@ import '../styled-components/card.scss';
 
 
 export default function Card({ contact }) {
+    const isFavorite = contact.isFavorite;
+
     return (
         <div className="card">
             <img src={contact.avatar} alt={contact.email} />
@@ -10,7 +12,11 @@ export default function Card({ contact }) {
             <p>{contact.email}</p>
             <div className="line"></div>
             <div className="action-buttons">
-                Like
+                {isFavorite ? 
+                    <button className='delete'>X</button> 
+                :
+                    <p>Like</p>
+                }
             </div>
         </div>
     );

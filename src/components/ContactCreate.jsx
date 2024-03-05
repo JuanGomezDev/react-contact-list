@@ -15,7 +15,7 @@ export default function ContactCreate() {
                 <input type="checkbox" id="favorite" name="favorite"/>
             </div>
             
-            <input type="submit" value="SAVE" className='save-btn'/>
+            <button type="submit" className='save-btn'>SAVE</button>
         </form>
         </>
     )

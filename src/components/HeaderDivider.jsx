@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import dividerImg from '../assets/icon/divider.png';
+import dividerImg from '../assets/divider.png';
 import '../styled-components/headerDivider.scss';
 
 export default function HeaderDivider({title = 'Encabezado'}) {

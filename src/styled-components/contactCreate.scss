@@ -14,7 +14,7 @@ form {
 
     input {
         padding: 15px 10px;
-        background-color: #d4e17f;
+        background-color: #d8e47a;
         color: rgb(0, 0, 0);
         border: none;
         border-bottom: 1px solid white;
@@ -38,10 +38,15 @@ form {
         width: 60px;
         margin: 0px 40%;
         padding: 5px 2px;
+        border: none;
         border-radius: 5px;
         box-shadow: 0px 3px 4px rgb(167, 167, 167);
         font-weight: 500;
         color: rgb(91, 91, 91);
         cursor: pointer;
+        
+        &:active {
+            margin-top: 5px;
+        }
     }
 }
