@@ -5,10 +5,6 @@ export default function Overview() {
     return (
         <>
         <Nav />
-
-        <section>
-            
-        </section>
         </>
     );
 }

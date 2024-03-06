@@ -6,6 +6,7 @@ import NavLink from './NavLink';
 import { useState } from 'react';
 import ContactCreate from './ContactCreate';
 
+
 export default function Nav() {
     const [showForm, setShowForm] = useState(false);
 
@@ -31,13 +32,7 @@ export default function Nav() {
                 </button>
             </div>
         </nav>
-        {
-        showForm && (
-            <div>
-                <ContactCreate />
-            </div>
-        )
-        }
+        { showForm && <ContactCreate /> }
         </>
     )
 }
