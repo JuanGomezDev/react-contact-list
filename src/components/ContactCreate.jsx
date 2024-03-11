@@ -1,13 +1,30 @@
+import { useEffect, useRef } from 'react';
 import '../styled-components/contactCreate.scss';
 
-export default function ContactCreate() {
-    return (
-        <form action="">
-            <input type="text" id="first_name" name="first_name" placeholder='First Name' required/>
-            
-            <input type="text" id="last_name" name="last_name" placeholder='Last Name' required/>
+// useForm
 
-            <input type="email" id="email" name="email" placeholder='Email' required/>
+export default function ContactCreate() {
+    const firstNameRef = useRef();
+    const lastNameRef = useRef();
+    const emailRef = useRef();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    const handleSubmit = (e) => {
+        // evitar que se recargue la pagina
+        e.preventDefault();
+        
+    }
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <input type="text" placeholder='First Name' required ref={firstNameRef}/>
+            
+            <input type="text" placeholder='Last Name' required ref={lastNameRef}/>
+
+            <input type="email" placeholder='Email' required ref={emailRef}/>
             
             <div className="turn-favorite">
                 <label htmlFor="favorite">Enable like favorite</label>

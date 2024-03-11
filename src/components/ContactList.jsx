@@ -30,7 +30,6 @@ export default function ContactList() {
 
     // Cambiar de pagina al actualizar el valor de page
     useEffect(() => {
-        console.log(page);
         const fetchContacts = async () => {
             try {
                 const res = await getUsers(page);

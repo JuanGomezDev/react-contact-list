@@ -4,12 +4,15 @@
 $green: #C1D72F;
 
 nav {
+    position: fixed;
     z-index: 2;
+    top: 0;
     display: flex;
+    width: calc(100% - 70px);
     height: 60px;
     background-color: white;
     filter: drop-shadow(0px 4px 8px gray);
-    padding: 10px 60px 10px 60px;
+    padding: 10px 40px;
 
     // Estilos para el logo del nav
     .brand {

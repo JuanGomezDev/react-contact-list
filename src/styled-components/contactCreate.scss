@@ -49,4 +49,9 @@ form {
             margin-top: 5px;
         }
     }
+
+    @media (max-width: 800px) {     
+        margin: 0px 20%;
+        padding: 50px 20px 30px 20px;
+    }
 }

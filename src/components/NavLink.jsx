@@ -9,7 +9,7 @@ export default function NavLink({ text = 'Link', path = '#' }) {
     // Uso de useLocation para obtener la ubicacion actual de la pagina
     const currentLocation = useLocation();
 
-    // Efecto para activar eestilo activo al link 
+    // Efecto para activar estilo activo al link 
     useEffect(() => {
         setIsActive(location.pathname === path)
     }, [currentLocation, path])
