@@ -21,7 +21,6 @@ export default function ContactList() {
                 setTotalPages(res.data.total_pages);
                 setLoader(true);
             } catch (error) {
-                setLoader(true);
                 console.log('Error: ', error);
             }
         }
@@ -29,6 +28,7 @@ export default function ContactList() {
         fetchContacts();
     }, [])
 
+    // Cambiar de pagina al actualizar el valor de page
     useEffect(() => {
         console.log(page);
         const fetchContacts = async () => {
@@ -38,7 +38,6 @@ export default function ContactList() {
                 setContacts(res.data.data);
                 setLoader(true);
             } catch (error) {
-                setLoader(true);
                 console.log('Error: ', error);
             }
         }
@@ -47,8 +46,8 @@ export default function ContactList() {
     }, [page])
 
 
-    if(loader === false) { 
-        return <div style={{marginTop: '120px', textAlign: 'center'}}>Loading contacts...</div>
+    if(!loader) { 
+        return <h1 style={{marginTop: '120px', textAlign: 'center'}}>Loading contacts...</h1>
     }
 
     return (
