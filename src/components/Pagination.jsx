@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import '../styled-components/pagination.scss';
 
 
 export default function Pagination({page, setPage, totalPages}) {
@@ -13,7 +14,8 @@ export default function Pagination({page, setPage, totalPages}) {
     }
 
     return (
-        <div>
+        <div className='pagination-container'>
+            <p>{page} de {totalPages}</p>
             <button onClick={() => handlePage(-1)}>{"<"}</button>
             <button onClick={() => handlePage(+1)}>{">"}</button>
         </div>

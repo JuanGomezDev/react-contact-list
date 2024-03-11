@@ -1,0 +1,33 @@
+// Estilos componente Pagination
+
+
+.pagination-container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-top: 25px;
+    padding: 15px;
+    gap: 15px;
+    border-bottom: 2px solid lightgray;
+
+    p {
+        margin-right: 30px;
+        font-weight: 500;
+    }
+
+    button {
+        width: 50px;
+        font-size: 32px;
+        background-color: transparent;
+        color: gray;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+            color: black;
+        }
+        &:after {
+            color: black;
+        }
+    }
+}
