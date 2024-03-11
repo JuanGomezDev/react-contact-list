@@ -2,12 +2,16 @@ import axios from "axios";
 
 
 const api = axios.create({
-    baseURL: 'https://reqres.in/api',
+    baseURL: 'https://reqres.in/api/',
 })
 
 
-export const getUsers = () => {
-    return api.get('/users?page=1')
+export const getUsers = (page) => {
+    return api.get(`users?page=${page}`)
+}
+
+export const createUser = () => {
+    return api.post('users')
 }
 
 
