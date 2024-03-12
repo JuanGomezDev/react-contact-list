@@ -6,8 +6,6 @@ import Overview from './pages/overview/Overview';
 import Contact from './pages/contacts/Contact';
 import Favorite from './pages/favorites/Favorite';
 
-// importar contexto general para tener acceso a Contacts en cualquier punto
-
 
 const router = createBrowserRouter([
   {
@@ -26,5 +24,6 @@ const router = createBrowserRouter([
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  // App.jsx rutas
   <RouterProvider router={router} />
 );

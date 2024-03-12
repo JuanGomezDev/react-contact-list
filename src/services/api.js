@@ -10,8 +10,8 @@ export const getUsers = (page) => {
     return api.get(`users?page=${page}`)
 }
 
-export const createUser = () => {
-    return api.post('users')
+export const createUser = (contact) => {
+    return api.post('users', contact)
 }
 
 

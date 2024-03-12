@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import '../styled-components/nav.scss';
 import plusImg from '../assets/icon/plus.png';
@@ -7,7 +8,7 @@ import { useState } from 'react';
 import ContactCreate from './ContactCreate';
 
 
-export default function Nav() {
+export default function Nav({setContacts}) {
     const [showForm, setShowForm] = useState(false);
 
     const handleButtonClick = () => {
@@ -32,7 +33,11 @@ export default function Nav() {
                 </button>
             </div>
         </nav>
-        { showForm && <ContactCreate /> }
+        { showForm && <ContactCreate setContacts={setContacts}/> }
         </>
     )
+}
+
+Nav.propTypes = {
+    setContacts: PropTypes.func.isRequired,
 }
