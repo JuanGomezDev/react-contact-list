@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types';
 import '../styled-components/card.scss';
+import likeImg from '../assets/icon/like.png';
+import deleteImg from '../assets/icon/delete.png';
+import removeImg from '../assets/icon/remove.png';
 
 
 export default function Card({ contact }) {
@@ -12,11 +15,19 @@ export default function Card({ contact }) {
             <p>{contact.email}</p>
             <div className="line"></div>
             <div className="action-buttons">
-                {isFavorite ? 
-                    <button className='delete'>X</button> 
-                :
-                    <p>Like</p>
+                {isFavorite 
+                    ?
+                    <button className='button remove'>
+                        <img src={removeImg} alt="" />
+                    </button> 
+                    :
+                    <button className='button like'>
+                        <img src={likeImg} alt="" />
+                    </button>
                 }
+                <button className='button delete'>
+                    <img src={deleteImg} alt="" />
+                </button> 
             </div>
         </div>
     );

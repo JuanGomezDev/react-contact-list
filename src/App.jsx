@@ -52,7 +52,7 @@ export default function App() {
         <Nav setContacts={setContacts}/>
 
         <Routes>
-            <Route path="/" element={<Overview isLoading={isLoading} contacts={contacts} page={page} setPage={setPage} totalPages={totalPages}/>} />
+            <Route path="/" element={<Overview />}/>
             <Route path="contacts" element={<Contact isLoading={isLoading} contacts={contacts} page={page} setPage={setPage} totalPages={totalPages}/>} />
             <Route path="favorites" element={<Favorite />} />
         </Routes>
