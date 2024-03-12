@@ -1,10 +1,10 @@
-import Nav from "../../components/Nav";
+import HeaderDivider from "../../components/HeaderDivider";
 
 
 export default function Overview() {
     return (
-        <>
-        <Nav />
-        </>
+        <section>
+            <HeaderDivider title="Overview"/>
+        </section>
     );
 }

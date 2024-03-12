@@ -1,56 +1,24 @@
-import { useEffect, useState } from "react";
-import ContactList from "../../components/ContactList";
-import Nav from "../../components/Nav";
-import { getUsers } from "../../services/api";
+import PropTypes from 'prop-types';
+import ContactList from '../../components/ContactList';
 
 
-export default function Contact() {
-    const [contacts, setContacts] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
-    
-    // Consumir api, obtener usuarios
-    useEffect(() => {
-        const fetchContacts = async () => {
-            try {
-                const res = await getUsers(page);
-                
-                setContacts(res.data.data);
-                setTotalPages(res.data.total_pages);
-                setIsLoading(false);
-            } catch (error) {
-                console.log('Error: ', error);
-            }
-        }
-
-        fetchContacts();
-    }, [])
-    
-    // Cambiar de pagina al actualizar el valor de page
-    useEffect(() => {
-        const fetchContacts = async () => {
-            try {
-                const res = await getUsers(page);
-                
-                setContacts(res.data.data);
-                setIsLoading(false);
-            } catch (error) {
-                console.log('Error: ', error);
-            }
-        }
-        
-        fetchContacts();
-    }, [page])
-
+export default function Contact({isLoading, contacts, page, setPage, totalPages}) {
     return (
         <>
-        <Nav setContacts={setContacts}/>
         {
-            isLoading 
-                ? <h1 style={{marginTop: '120px', textAlign: 'center'}}>Loading contacts...</h1>
-                : <ContactList contacts={contacts} page={page} setPage={setPage} totalPages={totalPages}/>
+        isLoading 
+            ?   <h1 style={{marginTop: '120px', textAlign: 'center'}}>Loading contacts...</h1>
+            :
+                <ContactList title='Contact List' contacts={contacts} page={page} setPage={setPage} totalPages={totalPages}/>
         }
         </>
     )
+}
+
+Contact.propTypes = {
+    isLoading: PropTypes.bool.isRequired,
+    contacts: PropTypes.array.isRequired,
+    page: PropTypes.number.isRequired,
+    setPage: PropTypes.func.isRequired,
+    totalPages: PropTypes.number.isRequired,
 }

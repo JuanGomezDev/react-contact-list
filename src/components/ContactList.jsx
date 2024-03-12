@@ -4,10 +4,10 @@ import HeaderDivider from "./HeaderDivider";
 import Pagination from "./Pagination";
 
 
-export default function ContactList({contacts, page, setPage, totalPages}) {
+export default function ContactList({title, contacts, page, setPage, totalPages}) {
     return (
         <section>
-            <HeaderDivider title="Contact List" />
+            <HeaderDivider title={title} />
             <CardList contactsList={contacts} />
             <Pagination page={page} setPage={setPage} totalPages={totalPages}/>
         </section>
@@ -15,6 +15,7 @@ export default function ContactList({contacts, page, setPage, totalPages}) {
 }
 
 ContactList.propTypes = {
+    title: PropTypes.string.isRequired,
     contacts: PropTypes.array.isRequired,
     page: PropTypes.number.isRequired,
     setPage: PropTypes.func.isRequired,
