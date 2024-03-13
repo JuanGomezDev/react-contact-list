@@ -9,6 +9,10 @@ import { useState } from 'react';
 export default function Card({ contact }) {
     const [isFavorite, setIsFavorite] = useState(false);
 
+    const handleFavorite = () => {
+        setIsFavorite(!isFavorite)
+    };
+
     return (
         <div className="card">
             <img src={contact.avatar} alt={contact.email} className={isFavorite ? "favorite" : ""}/>
@@ -18,11 +22,11 @@ export default function Card({ contact }) {
             <div className="action-buttons">
                 {isFavorite 
                     ?
-                    <button onClick={() => {setIsFavorite(false)}} className='button remove'>
+                    <button onClick={handleFavorite} className='button remove'>
                         <img src={removeImg} alt="" />
                     </button> 
                     :
-                    <button onClick={() => {setIsFavorite(true)}} className='button like'>
+                    <button onClick={handleFavorite} className='button like'>
                         <img src={likeImg} alt="" />
                     </button>
                 }

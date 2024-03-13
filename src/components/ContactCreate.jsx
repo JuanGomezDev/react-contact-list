@@ -53,7 +53,7 @@ export default function ContactCreate({setContacts}) {
             
             <div className="turn-favorite">
                 <label htmlFor="favorite">Enable like favorite</label>
-                <input type="checkbox" id="favorite" name="favorite"/>
+                <input type="checkbox" id='favorite'/>
             </div>
             
             <button type="submit" className='save-btn'>SAVE</button>
