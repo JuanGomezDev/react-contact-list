@@ -38,6 +38,11 @@ export default function ContactCreate({setContacts}) {
             newContact.avatar = img;
             // agregar nuevo contacto a la lista de contactos
             setContacts((prev) => [...prev, newContact]);
+
+            // vaciar campos
+            firstNameRef.current.value = '';
+            lastNameRef.current.value = '';
+            emailRef.current.value = '';
         } catch (error) {
             console.log(error);
         }
