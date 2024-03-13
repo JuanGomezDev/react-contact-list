@@ -3,25 +3,26 @@ import '../styled-components/card.scss';
 import likeImg from '../assets/icon/like.png';
 import deleteImg from '../assets/icon/delete.png';
 import removeImg from '../assets/icon/remove.png';
+import { useState } from 'react';
 
 
 export default function Card({ contact }) {
-    const isFavorite = contact.isFavorite;
+    const [isFavorite, setIsFavorite] = useState(false);
 
     return (
         <div className="card">
-            <img src={contact.avatar} alt={contact.email} />
+            <img src={contact.avatar} alt={contact.email} className={isFavorite ? "favorite" : ""}/>
             <h3>{contact.first_name} {contact.last_name}</h3>
             <p>{contact.email}</p>
             <div className="line"></div>
             <div className="action-buttons">
                 {isFavorite 
                     ?
-                    <button className='button remove'>
+                    <button onClick={() => {setIsFavorite(false)}} className='button remove'>
                         <img src={removeImg} alt="" />
                     </button> 
                     :
-                    <button className='button like'>
+                    <button onClick={() => {setIsFavorite(true)}} className='button like'>
                         <img src={likeImg} alt="" />
                     </button>
                 }

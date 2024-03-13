@@ -16,6 +16,12 @@ $red: #cf6679;
         width: 100px;
         height: 100px;
         border-radius: 100%;
+
+        &.favorite {
+            border: 5px solid $green;
+            width: 90.8px;
+            height: 90.8px;
+        }
     }
 
     h3 {
