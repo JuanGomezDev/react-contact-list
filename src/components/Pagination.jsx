@@ -1,17 +1,23 @@
-import PropTypes from 'prop-types';
+import { setPage } from '../redux/api/apiSlice';
 import '../styled-components/pagination.scss';
+import { useDispatch, useSelector } from 'react-redux';
 
 
-export default function Pagination({page, setPage, totalPages}) {
+export default function Pagination() {
+    const dispatch = useDispatch();
+    const page = useSelector(state => state.api.page);
+    const totalPages = useSelector(state => state.api.totalPages);
+
     const handlePage = (nPage) => {
         const nextPage = page + nPage;
         
         if (nextPage<1 || nextPage>totalPages) {
             console.log('No hay página válida');
         } else {
-            setPage(nextPage)
+            dispatch(setPage(nextPage));
         }
     }
+
 
     return (
         <div className='pagination-container'>
@@ -20,10 +26,4 @@ export default function Pagination({page, setPage, totalPages}) {
             <button onClick={() => handlePage(+1)}>{">"}</button>
         </div>
     )
-}
-
-Pagination.propTypes = {
-    page: PropTypes.number.isRequired,
-    setPage: PropTypes.func.isRequired,
-    totalPages: PropTypes.number.isRequired
 }

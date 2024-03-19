@@ -1,18 +1,16 @@
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import '../styled-components/cardList.scss';
 import Card from './Card';
 
 
-export default function CardList({contactsList}) {
+export default function CardList() {
+    const contacts = useSelector(state => state.api.contacts); 
+
     return (
         <div className='contacts-container'>
-            {contactsList.map((contact) => {
+            {contacts.map((contact) => {
                 return <Card key={contact.id} contact={contact}/>
             })}
         </div>
     );
-}
-
-CardList.propTypes = {
-    contactsList: PropTypes.array.isRequired,
 }

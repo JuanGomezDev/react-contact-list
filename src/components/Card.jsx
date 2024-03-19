@@ -6,7 +6,7 @@ import removeImg from '../assets/icon/remove.png';
 import { useState } from 'react';
 
 
-export default function Card({ contact }) {
+export default function Card({contact}) {
     const [isFavorite, setIsFavorite] = useState(false);
 
     const handleFavorite = () => {
