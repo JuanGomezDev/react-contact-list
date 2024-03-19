@@ -36,6 +36,7 @@ const apiSlice = createSlice({
     isLoading: false,
     page: 1,
     totalPages: 1,
+    isFavoriteContactIds: [],
   },
   reducers: {
     setContacts(state, action) {
@@ -50,17 +51,32 @@ const apiSlice = createSlice({
     setTotalPages(state, action) {
       state.totalPages = action.payload;
     },
+    setIsFavoriteContact(state, action) {
+      const contactId = action.payload;
+      const index = state.isFavoriteContactIds.indexOf(contactId);
+      if (index === -1) {
+        state.isFavoriteContactIds.push(contactId);
+      } else {
+        state.isFavoriteContactIds.splice(index, 1);
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getUsers.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(getUsers.fulfilled, (state, action) => {
-        state.contacts = action.payload.data;
-        state.totalPages = action.payload.total_pages;
-        state.isLoading = false;
-      })
+    // getUsers 
+    .addCase(getUsers.pending, (state) => {
+      state.isLoading = true;
+    })
+    .addCase(getUsers.fulfilled, (state, action) => {
+      state.contacts = action.payload.data.map(contact => ({
+        ...contact,
+        isFavorite: false
+      }));
+      state.contacts = action.payload.data;
+      state.totalPages = action.payload.total_pages;
+      state.isLoading = false;
+    })
+    // createUsers 
       .addCase(createUser.pending, (state) => {
         state.isLoading = true;
       })
@@ -71,6 +87,6 @@ const apiSlice = createSlice({
   },
 });
 
-export const { setContacts, setIsLoading, setPage, setTotalPages } = apiSlice.actions;
+export const { setContacts, setIsLoading, setPage, setTotalPages, setIsFavoriteContact } = apiSlice.actions;
 
 export default apiSlice.reducer;

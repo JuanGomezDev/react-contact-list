@@ -3,15 +3,18 @@ import '../styled-components/card.scss';
 import likeImg from '../assets/icon/like.png';
 import deleteImg from '../assets/icon/delete.png';
 import removeImg from '../assets/icon/remove.png';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setIsFavoriteContact } from '../redux/api/apiSlice';
 
 
 export default function Card({contact}) {
-    const [isFavorite, setIsFavorite] = useState(false);
+    const dispatch = useDispatch();
+    const isFavorite = useSelector(state => state.api.isFavoriteContactIds.includes(contact.id));
 
     const handleFavorite = () => {
-        setIsFavorite(!isFavorite)
+        dispatch(setIsFavoriteContact(contact.id));
     };
+
 
     return (
         <div className="card">
