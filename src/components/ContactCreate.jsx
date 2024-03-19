@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import '../styled-components/contactCreate.scss';
 import { createUser } from '../services/api';
 
@@ -8,6 +8,7 @@ export default function ContactCreate({setContacts, setShowForm}) {
     const firstNameRef = useRef();
     const lastNameRef = useRef();
     const emailRef = useRef();
+    const [isFavorite, setIsFavorite] = useState(false);
 
     // Subir al tope de la pagina al renderizar este componente
     useEffect(() => {
@@ -26,7 +27,8 @@ export default function ContactCreate({setContacts, setShowForm}) {
         const contact = {
             first_name,
             last_name,
-            email
+            email,
+            isFavorite: isFavorite
         }
 
         try {
@@ -43,12 +45,18 @@ export default function ContactCreate({setContacts, setShowForm}) {
             firstNameRef.current.value = '';
             lastNameRef.current.value = '';
             emailRef.current.value = '';
+            setIsFavorite(false)
 
             setShowForm(false);
         } catch (error) {
             console.log(error);
         }
     }
+    
+    const handleCheckboxChange = (e) => {
+        setIsFavorite(e.target.checked);
+    }
+
 
     return (
         <form onSubmit={handleSubmit}>
@@ -60,7 +68,7 @@ export default function ContactCreate({setContacts, setShowForm}) {
             
             <div className="turn-favorite">
                 <label htmlFor="favorite">Enable like favorite</label>
-                <input type="checkbox" id='favorite'/>
+                <input type="checkbox" id='favorite' checked={isFavorite} onChange={handleCheckboxChange}/>
             </div>
             
             <button type="submit" className='save-btn'>SAVE</button>
