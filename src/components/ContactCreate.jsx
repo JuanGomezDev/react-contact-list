@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import '../styled-components/contactCreate.scss';
-import { createUser } from '../redux/api/apiSlice';
+import { createUser, setIsFavoriteContact } from '../redux/api/apiSlice';
 import { useDispatch } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 
 
 export default function ContactCreate({setShowForm}) {
@@ -28,15 +29,21 @@ export default function ContactCreate({setShowForm}) {
 
         // Contacto a enviar
         const contact = {
+            id : nanoid(),
             first_name,
             last_name,
             email,
             avatar,
-            isFavorite: isFavorite
+            isFavorite
         }
 
         try {
             dispatch(createUser(contact));
+
+            // settearlo como contacto favorito sí el valor del checkbox es true
+            if (isFavorite === true) {
+                dispatch(setIsFavoriteContact(contact.id));
+            }
 
             // vaciar campos
             firstNameRef.current.value = '';
