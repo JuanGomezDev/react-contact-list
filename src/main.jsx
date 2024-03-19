@@ -7,6 +7,7 @@ import './main.scss';
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    {/* Pro */}
     <BrowserRouter>
       <App />
     </BrowserRouter>

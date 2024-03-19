@@ -4,7 +4,7 @@ import '../styled-components/contactCreate.scss';
 import { createUser } from '../services/api';
 
 
-export default function ContactCreate({setContacts}) {
+export default function ContactCreate({setContacts, setShowForm}) {
     const firstNameRef = useRef();
     const lastNameRef = useRef();
     const emailRef = useRef();
@@ -43,6 +43,8 @@ export default function ContactCreate({setContacts}) {
             firstNameRef.current.value = '';
             lastNameRef.current.value = '';
             emailRef.current.value = '';
+
+            setShowForm(false);
         } catch (error) {
             console.log(error);
         }
@@ -68,4 +70,5 @@ export default function ContactCreate({setContacts}) {
 
 ContactCreate.propTypes = {
     setContacts: PropTypes.func.isRequired,
+    setShowForm: PropTypes.func.isRequired,
 }

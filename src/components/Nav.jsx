@@ -33,7 +33,7 @@ export default function Nav({setContacts}) {
                 </button>
             </div>
         </nav>
-        { showForm && <ContactCreate setContacts={setContacts}/> }
+        { showForm && <ContactCreate setContacts={setContacts} setShowForm={setShowForm}/> }
         </>
     )
 }
