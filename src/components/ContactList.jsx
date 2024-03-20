@@ -4,11 +4,11 @@ import HeaderDivider from "./HeaderDivider";
 import Pagination from "./Pagination";
 
 
-export default function ContactList({title}) {
+export default function ContactList({title, contacts}) {
     return (
         <section>
             <HeaderDivider title={title} />
-            <CardList />
+            <CardList contacts={contacts}/>
             <Pagination />
         </section>
     )
@@ -16,4 +16,5 @@ export default function ContactList({title}) {
 
 ContactList.propTypes = {
     title: PropTypes.string.isRequired,
+    contacts: PropTypes.array.isRequired,
 }
