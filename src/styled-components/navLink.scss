@@ -23,4 +23,9 @@ $green: #C1D72F;
     &:active {
         color: $green;
     }
+
+
+    @media (max-width: 480px) {
+        font-size: 16px;
+    }
 }

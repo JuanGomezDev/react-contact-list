@@ -28,6 +28,15 @@ nav {
         img {
             width: 150px;
         }
+
+        
+        @media (max-width: 680px) {
+            display: none;
+
+            img {
+                width: 0px;
+            }
+        }
     }
 
     // Estilos div de los links
@@ -36,6 +45,11 @@ nav {
         align-items: center;
         gap: 50px;
         margin-left: auto;
+
+        
+        @media (max-width: 480px) {
+            gap: 20px;
+        }
     }
 
     // Estilos para el boton NEW
@@ -57,6 +71,24 @@ nav {
 
         img {
             width: 20px;
+        }
+    }
+
+
+    @media (max-width: 580px) {
+        align-items: center;
+        justify-content: center;
+        width: calc(100% - 30px);
+        padding: 10px 20px;    
+        
+        .navbar-nav {
+            margin-left: 0px;
+        }
+
+        button {
+            width: auto;
+            font-size: 0px;
+            padding: 0px 10px;
         }
     }
 }
