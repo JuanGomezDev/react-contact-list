@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
-import ContactList from "../../components/ContactList";
+import HeaderDivider from '../../components/HeaderDivider';
+import CardList from '../../components/CardList';
+import Pagination from '../../components/Pagination';
 
 
 export default function Favorite() {
@@ -10,18 +12,23 @@ export default function Favorite() {
     // obtener solo los contactos favoritos
     const favoriteContacts = contacts.filter(contact => isFavoriteContactIds.includes(contact.id));
 
+    
     return (
-        <>
+        <section>
+        <HeaderDivider title='Favorites' />
         {
-        isLoading 
+            isLoading 
             ?   <h1 style={{marginTop: '120px', textAlign: 'center'}}>Loading contacts...</h1>
             :
                 favoriteContacts.length == 0 
                 ?
                 <h1 style={{marginTop: '120px', textAlign: 'center'}}>You don´t have any favorite contacts yet</h1>
                 :
-                <ContactList title='Favorites' contacts={favoriteContacts}/>
+                <>
+                <CardList contacts={favoriteContacts}/>
+                <Pagination />
+                </>
         }
-        </>
+        </section>
     )
 }
