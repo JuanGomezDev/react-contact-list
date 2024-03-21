@@ -35,6 +35,7 @@ export const deleteUser = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await deleteUserId(id);
+      console.log(response);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -102,6 +103,7 @@ const apiSlice = createSlice({
         console.log(action.payload.id);
         const deletedContactId = action.payload.id;
         state.contacts = state.contacts.filter(contact => contact.id !== deletedContactId);
+        console.log(state.contacts);
       });
   },
 });

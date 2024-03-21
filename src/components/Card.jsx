@@ -6,6 +6,7 @@ import removeImg from '../assets/icon/remove.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteUser, setIsFavoriteContact } from '../redux/api/apiSlice';
 import { useState } from 'react';
+import ModalDelete from './ModalDelete';
 
 
 export default function Card({contact}) {
@@ -18,7 +19,7 @@ export default function Card({contact}) {
     };
 
     const handleDelete = () => {
-        showConfirmation(true)
+        setShowConfirmation(true)
     }
     
     const confirmDelete = () => {
@@ -51,14 +52,7 @@ export default function Card({contact}) {
                     <img src={deleteImg} alt="" />
                 </button> 
             </div>
-            {
-                showConfirmation && 
-                <div className="modal">
-                    <p></p>
-                    <button onClick={confirmDelete}>Yes</button>
-                    <button onClick={handleCloseModal}>No</button>
-                </div>
-            }
+            <ModalDelete show={showConfirmation} onClose={handleCloseModal} onConfirm={confirmDelete}/>
         </div>
     );
 }
