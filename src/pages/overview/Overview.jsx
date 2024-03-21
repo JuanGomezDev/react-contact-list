@@ -25,16 +25,16 @@ export default function Overview() {
                 <HeaderDivider title='Favorites' />
                 {
                     favoriteContacts.length == 0
-                        ?
-                        <h1 style={{ marginTop: '120px', textAlign: 'center' }}>You don´t have any favorite contacts yet</h1>
-                        :
-                        <CardList contacts={favoriteContacts} />
+                    ?
+                    <h1 style={{ margin: '120px 0px', textAlign: 'center' }}>You don´t have any favorite contacts yet</h1>
+                    :
+                    <CardList contacts={favoriteContacts} />
                 }
             </section>
             <section>
                 <HeaderDivider title='Contact List' />
                 <CardList contacts={contacts} />
-                <Pagination />
+                { contacts.length >= 6 && <Pagination /> }
             </section>
         </>
     );

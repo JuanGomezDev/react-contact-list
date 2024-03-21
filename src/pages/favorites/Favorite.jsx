@@ -29,14 +29,8 @@ export default function Favorite() {
     return (
         <section>
             <HeaderDivider title='Favorites' />
-            {
-                <>
-                    <CardList contacts={favoriteContacts} />
-                    {
-                        favoriteContacts.length >= 6 && <Pagination />
-                    }
-                </>
-            }
+            <CardList contacts={favoriteContacts} />
+            { favoriteContacts.length >= 6 && <Pagination /> }
         </section>
     )
 }

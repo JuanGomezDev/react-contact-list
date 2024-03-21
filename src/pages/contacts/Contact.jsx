@@ -14,13 +14,19 @@ export default function Contact() {
         )
     }
 
+    if (!contacts.length) {
+        return (
+            <h1 style={{marginTop: '120px', textAlign: 'center'}}>There are no contacts</h1>
+        )
+    }
+
 
     return (
         <>
             <section>
                 <HeaderDivider title='Contact List' />
-                    <CardList contacts={contacts}/>
-                <Pagination />
+                <CardList contacts={contacts}/>
+                { contacts.length >= 6 && <Pagination /> }
             </section>
         </>
     )

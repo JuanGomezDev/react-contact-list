@@ -89,7 +89,7 @@ const apiSlice = createSlice({
         state.totalPages = action.payload.total_pages;
         state.isLoading = false;
       })
-    // createUsers 
+    // createUser
       .addCase(createUser.pending, (state) => {
         state.isLoading = true;
       })
@@ -97,10 +97,14 @@ const apiSlice = createSlice({
         state.contacts.push(action.payload);
         state.isLoading = false;
       })
-    // deleteUser
+      // deleteUser
+      .addCase(deleteUser.pending, (state) => {
+        state.isLoading = true;
+      })
       .addCase(deleteUser.fulfilled, (state, action) => {
         const deletedContactId = action.meta.arg;
         state.contacts = state.contacts.filter(contact => contact.id !== deletedContactId);
+        state.isLoading = false;
       });
   },
 });
