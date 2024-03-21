@@ -3,6 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   getUsers as fetchUsers,
   createUser as createNewUser,
+  deleteUser as deleteUserId,
 } from "../../services/api";
 
 export const getUsers = createAsyncThunk(
@@ -22,6 +23,18 @@ export const createUser = createAsyncThunk(
   async (contact, thunkAPI) => {
     try {
       const response = await createNewUser(contact);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const deleteUser = createAsyncThunk(
+  "api/deleteUser",
+  async (id, thunkAPI) => {
+    try {
+      const response = await deleteUserId(id);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -64,18 +77,18 @@ const apiSlice = createSlice({
   extraReducers: (builder) => {
     builder
     // getUsers 
-    .addCase(getUsers.pending, (state) => {
-      state.isLoading = true;
-    })
-    .addCase(getUsers.fulfilled, (state, action) => {
-      state.contacts = action.payload.data.map(contact => ({
-        ...contact,
-        isFavorite: false
-      }));
-      state.contacts = action.payload.data;
-      state.totalPages = action.payload.total_pages;
-      state.isLoading = false;
-    })
+      .addCase(getUsers.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getUsers.fulfilled, (state, action) => {
+        state.contacts = action.payload.data.map(contact => ({
+          ...contact,
+          isFavorite: false
+        }));
+        state.contacts = action.payload.data;
+        state.totalPages = action.payload.total_pages;
+        state.isLoading = false;
+      })
     // createUsers 
       .addCase(createUser.pending, (state) => {
         state.isLoading = true;
@@ -83,6 +96,12 @@ const apiSlice = createSlice({
       .addCase(createUser.fulfilled, (state, action) => {
         state.contacts.push(action.payload);
         state.isLoading = false;
+      })
+    // deleteUser
+      .addCase(deleteUser.fulfilled, (state, action) => {
+        console.log(action.payload.id);
+        const deletedContactId = action.payload.id;
+        state.contacts = state.contacts.filter(contact => contact.id !== deletedContactId);
       });
   },
 });

@@ -12,31 +12,30 @@ export default function Overview() {
     // obtener solo los contactos favoritos
     const favoriteContacts = contacts.filter(contact => isFavoriteContactIds.includes(contact.id));
 
+    if (isLoading) {
+        return (
+            <h1 style={{ marginTop: '120px', textAlign: 'center' }}>Loading contacts...</h1>
+        )
+    }
+
 
     return (
         <>
-        {
-        isLoading 
-            ?   <h1 style={{marginTop: '120px', textAlign: 'center'}}>Loading contacts...</h1>
-            :
-                <>
-                <section>
+            <section>
                 <HeaderDivider title='Favorites' />
                 {
-                    favoriteContacts.length == 0 
-                    ?
-                    <h1 style={{marginTop: '120px', textAlign: 'center'}}>You don´t have any favorite contacts yet</h1>
-                    :
-                    <CardList contacts={favoriteContacts}/>
+                    favoriteContacts.length == 0
+                        ?
+                        <h1 style={{ marginTop: '120px', textAlign: 'center' }}>You don´t have any favorite contacts yet</h1>
+                        :
+                        <CardList contacts={favoriteContacts} />
                 }
-                </section>
-                <section>
-                    <HeaderDivider title='Contact List' />
-                    <CardList contacts={contacts}/>
-                    <Pagination />
-                </section>
-                </>
-        }
+            </section>
+            <section>
+                <HeaderDivider title='Contact List' />
+                <CardList contacts={contacts} />
+                <Pagination />
+            </section>
         </>
     );
 }

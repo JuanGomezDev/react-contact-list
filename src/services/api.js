@@ -14,5 +14,8 @@ export const createUser = (contact) => {
     return api.post('users', contact)
 }
 
+export const deleteUser = (id) => {
+    return api.delete('users', id)
+}
 
 
