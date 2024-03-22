@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import '../styled-components/nav.scss';
 import plusImg from '../assets/icon/plus.png';
-import avatarImg from '../assets/icon/avatar.png';
+import avatarImg from '../assets/icon/globant.png';
 import NavLink from './NavLink';
 import { useState } from 'react';
 import ContactCreate from './ContactCreate';
