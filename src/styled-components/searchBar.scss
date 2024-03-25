@@ -3,7 +3,7 @@
 .search-bar {
     display: flex;
     align-items: center;
-    padding: 60px 50% 0px 0px;
+    padding: 0px 50% 40px 0px;
 
     input {
         padding: 8px;
@@ -15,6 +15,6 @@
 
 
     @media (max-width: 480px) {
-        padding: 60px 0% 0px 0px;
+        padding-right: 0%;
     }
 }

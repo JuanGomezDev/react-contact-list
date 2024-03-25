@@ -1,15 +1,12 @@
 import { useSelector } from 'react-redux';
 import HeaderDivider from '../../components/HeaderDivider';
-import CardList from '../../components/CardList';
 import Pagination from '../../components/Pagination';
-import SearchBar from '../../components/SearchBar';
-import { useState } from 'react';
+import SearchableList from '../../components/Searchable';
 
 
 export default function Contact() {
     const isLoading = useSelector(state => state.api.isLoading);
     const contacts = useSelector(state => state.api.contacts);
-    const [searchText, setSearchText] = useState('');
 
     if (isLoading) {
         return (
@@ -23,19 +20,18 @@ export default function Contact() {
         )
     }
 
-    // filtrar los contactos en función del texto de búsqueda, por nombre o apellido
-    const filteredContacts = contacts.filter((contact) =>
-        contact.first_name.toLowerCase().includes(searchText.toLowerCase()) || 
-        contact.last_name.toLowerCase().includes(searchText.toLowerCase())
-    );
-
 
     return (
         <>
             <section>
-                <SearchBar searchText={searchText} setSearchText={setSearchText}/>
                 <HeaderDivider title='Contact List' />
-                <CardList contacts={filteredContacts}/>
+                <SearchableList
+                    items={contacts}
+                    filterFunction={searchText => contact =>
+                        contact.first_name.toLowerCase().includes(searchText.toLowerCase()) ||
+                        contact.last_name.toLowerCase().includes(searchText.toLowerCase())
+                    }
+                />
                 { contacts.length >= 6 && <Pagination /> }
             </section>
         </>

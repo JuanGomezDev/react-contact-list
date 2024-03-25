@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import HeaderDivider from '../../components/HeaderDivider';
-import CardList from '../../components/CardList';
 import Pagination from '../../components/Pagination';
+import SearchableList from "../../components/Searchable";
 
 
 export default function Favorite() {
@@ -29,7 +29,13 @@ export default function Favorite() {
     return (
         <section>
             <HeaderDivider title='Favorites' />
-            <CardList contacts={favoriteContacts} />
+            <SearchableList
+                items={favoriteContacts}
+                filterFunction={searchText => contact =>
+                    contact.first_name.toLowerCase().includes(searchText.toLowerCase()) ||
+                    contact.last_name.toLowerCase().includes(searchText.toLowerCase())
+                }
+            />
             { favoriteContacts.length >= 6 && <Pagination /> }
         </section>
     )
