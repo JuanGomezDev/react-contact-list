@@ -30,4 +30,13 @@
             color: black;
         }
     }
+
+
+    @media (max-width: 360px) {
+        gap: 5px;
+
+        p {
+            margin-right: 15px;
+        }
+    }
 }
